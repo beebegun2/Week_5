@@ -28,7 +28,7 @@ class Artist {
 
 
 describe(){
-    return `${this.name} is one of ${this.singers.length}
+    return `${this.name} is one of ${this.songs.length}
     songs.`;
     }
 }
@@ -107,7 +107,7 @@ class Menu {
             description =+ i + ') ' + this.selectedArtist.songs[i].singer + ' - ' + this.selectedArtist.songs[i].singer + '\n';
         }
 
-        let selection = this.showMainMenuOptions(description);
+        let selection = this.showArtistMenuOptions(description);
         switch (selection) {
             case '1':
                 this.createSong();
