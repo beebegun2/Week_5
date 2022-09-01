@@ -96,7 +96,7 @@ list.push('Hello');
 //menu drivin app example
 
 class Player {
-    constructo(name, position) {
+    constructor(name, position) {
         this.name = name;
         this.position = position;
     }
@@ -113,7 +113,7 @@ class Team {
     }
 
     addPlayer(player) {
-        if (player instanceof PLayer) {
+        if (player instanceof Player) {
             this.players.push(player);
         }else {
             throw new Error(`You can only add an instance of Player. Argument is not a player: ${player}`);
