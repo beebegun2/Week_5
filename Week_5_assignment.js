@@ -77,8 +77,8 @@ class Menu {
     showArtistMenuOptions(artistInfo){
         return prompt(`
         0) back
-        1) Create Artist
-        2) Delete Artist
+        1) Create Song
+        2) Delete Song
         -------------
         ${artistInfo}
         `);
@@ -126,9 +126,8 @@ class Menu {
     }
 
     createSong(){
-        let name = prompt('Enter name of the new Artist:');
-        let singer = prompt('Enter song by `$(artist}`');
-        this.selectedArtist.songs.push(new Artist(name, singer));
+        let name = prompt('Enter name of the new Song:');
+            this.selectedArtist.songs.push(new Artist(name, Song));
     }
 
     deleteSong(){
