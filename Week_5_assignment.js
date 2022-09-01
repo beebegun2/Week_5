@@ -79,8 +79,18 @@ class Menu {
         0) back
         1) Create Song
         2) Delete Song
+        3) View Songs
         -------------
         ${artistInfo}
+        `);
+    }
+
+    showSongMenuOptions(songInfo){
+        return prompt(`
+        0) back
+        1) View Songs
+       -------------
+        ${songInfo}
         `);
     }
 
@@ -115,10 +125,12 @@ class Menu {
             case '2':
                 this.deleteSong();
                 break;
+            case '3':
+                this.displaySongs();
             }    
         }
     }
-    deleteArtist() {
+    deleteArtist(){
         let index = prompt('Enter the index of the Artist you wish to delete:');
         if (index > -1 && index < this.artists.length) {
             this.artists.splice(index, 1);
@@ -134,10 +146,28 @@ class Menu {
         let index = ('Enter the index of the Song you wish to delete:');
         if (index > -1 && index < this.selectedArtist.songs.length) {
             this.selectedArtist.songs.splice(index, 1);
+        }
+    }
 
+    viewSong(){
+         let index = prompt('Viewing songs');
+         if (index > -1 && index < this.songs.length) {
+            this.selectedSong = this.songs[index];
+            let description = 'Song Name: ' + this.selectedSong.name + '\n';
+
+        for (let i = 0; i < this.selectedSong.songs.length; i++) {
+            description =+ i + ') ' + this.selectedSong.songs[i].singer + ' - ' + this.selectedSong.songs[i].singer + '\n';
+        }
+
+        let selection = this.showSongMenuOptions(description);
+        switch (selection) {
+            case '1':
+                this.displaySongs();
+            }    
         }
     }
 }
+
 
 let menu = new Menu();
 menu.start();
