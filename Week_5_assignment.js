@@ -74,7 +74,7 @@ class Menu {
         `);
     }
 
-    showMainMenuOptions(artistInfo){
+    showArtistMenuOptions(artistInfo){
         return prompt(`
         0) back
         1) Create Artist
@@ -104,7 +104,7 @@ class Menu {
             let description = 'Artist Name: ' + this.selectedArtist.name + '\n';
 
         for (let i = 0; i < this.selectedArtist.songs.length; i++) {
-            description =+ i + ') ' + this.selectedArtist.songs[i].song + ' - ' + this.selectedArtist.songs[i].song + '\n';
+            description =+ i + ') ' + this.selectedArtist.songs[i].singer + ' - ' + this.selectedArtist.songs[i].singer + '\n';
         }
 
         let selection = this.showMainMenuOptions(description);
@@ -127,8 +127,8 @@ class Menu {
 
     createSong(){
         let name = prompt('Enter name of the new Artist:');
-        let song = prompt('Enter song by `$(artist}`');
-        this.selectedArtist.artists.push(new Artist(name, song));
+        let singer = prompt('Enter song by `$(artist}`');
+        this.selectedArtist.songs.push(new Artist(name, singer));
     }
 
     deleteSong(){
