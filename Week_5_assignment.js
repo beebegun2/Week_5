@@ -79,18 +79,8 @@ class Menu {
         0) back
         1) Create Song
         2) Delete Song
-        3) View Songs
         -------------
         ${artistInfo}
-        `);
-    }
-
-    showSongMenuOptions(songInfo){
-        return prompt(`
-        0) back
-        1) View Songs
-       -------------
-        ${songInfo}
         `);
     }
 
@@ -103,7 +93,7 @@ class Menu {
     }
     displaySongs() {
         let songString = '';
-        for (let i = 0; i < this.songs.length; i++) {
+        for (let i = 0; i < this.songs; i++) {
             songString += i +') ' + this.songs [i].name + '\n';
         }
         alert(songString);
@@ -113,6 +103,13 @@ class Menu {
         this.artists.push(new Artist(name));
     }
 
+    deleteArtist(){
+        let index = prompt('Enter the index of the Artist you wish to delete:');
+        if (index > -1 && index < this.artists.length) {
+            this.artists.splice(index, 1);
+        }
+    }
+
     viewArtist(){
         let index = prompt('Enter the index of the Artist you wish to view:');
         if (index > -1 && index < this.artists.length) {
@@ -120,7 +117,7 @@ class Menu {
             let description = 'Artist Name: ' + this.selectedArtist.name + '\n';
 
         for (let i = 0; i < this.selectedArtist.songs.length; i++) {
-            description =+ i + ') ' + this.selectedArtist.songs[i].singer + ' - ' + this.selectedArtist.songs[i].singer + '\n';
+            description =+ i + ') ' + this.selectedArtist.songs[i].name + ' - ' + this.selectedArtist.songs[i].singer + '\n';
         }
 
         let selection = this.showArtistMenuOptions(description);
@@ -131,21 +128,14 @@ class Menu {
             case '2':
                 this.deleteSong();
                 break;
-            case '3':
-                this.displaySongs();
             }    
         }
     }
-    deleteArtist(){
-        let index = prompt('Enter the index of the Artist you wish to delete:');
-        if (index > -1 && index < this.artists.length) {
-            this.artists.splice(index, 1);
-        }
-    }
-
+    
     createSong(){
         let name = prompt('Enter name of the new Song:');
-            this.selectedArtist.songs.push(new Artist(name, Song));
+        let singer = prompt('Enter name of Artist')
+            this.selectedArtist.songs.push(new Song(name, singer));
     }
 
     viewSong(){
@@ -166,7 +156,7 @@ class Menu {
         }
     }
     deleteSong(){
-        let index = ('Enter the index of the Song you wish to delete:');
+        let index = prompt('Enter the index of the Song you wish to delete:');
         if (index > -1 && index < this.selectedArtist.songs.length) {
             this.selectedArtist.songs.splice(index, 1);
         }
