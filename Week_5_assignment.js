@@ -101,7 +101,13 @@ class Menu {
         }
         alert(artistString);
     }
-
+    displaySongs() {
+        let songString = '';
+        for (let i = 0; i < this.songs.length; i++) {
+            songString += i +') ' + this.songs [i].name + '\n';
+        }
+        alert(songString);
+    }
     createArtist(){
         let name = prompt('Enter name of new Artist:');
         this.artists.push(new Artist(name));
@@ -142,13 +148,6 @@ class Menu {
             this.selectedArtist.songs.push(new Artist(name, Song));
     }
 
-    deleteSong(){
-        let index = ('Enter the index of the Song you wish to delete:');
-        if (index > -1 && index < this.selectedArtist.songs.length) {
-            this.selectedArtist.songs.splice(index, 1);
-        }
-    }
-
     viewSong(){
          let index = prompt('Viewing songs');
          if (index > -1 && index < this.songs.length) {
@@ -166,8 +165,13 @@ class Menu {
             }    
         }
     }
+    deleteSong(){
+        let index = ('Enter the index of the Song you wish to delete:');
+        if (index > -1 && index < this.selectedArtist.songs.length) {
+            this.selectedArtist.songs.splice(index, 1);
+        }
+    }
 }
-
 
 let menu = new Menu();
 menu.start();
